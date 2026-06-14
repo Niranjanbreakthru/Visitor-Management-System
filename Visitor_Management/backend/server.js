@@ -65,8 +65,7 @@ migrateDb();
 const frontendDir = path.join(__dirname, '../frontend');
 
 app.get(['/', '/index.html'], (req, res) => {
-  const html = fs.readFileSync(path.join(frontendDir, 'vms_fixed.html'), 'utf8');
-  const lastIndex = html.lastIndexOf('</body>');
+const html = fs.readFileSync(path.join(__dirname, 'frontend', 'vms_fixed.html'), 'utf8');  const lastIndex = html.lastIndexOf('</body>');
   let injected = html;
   if (lastIndex !== -1) {
     injected = html.substring(0, lastIndex) + '<script src="/api-bridge.js"></script>\n</body>' + html.substring(lastIndex + 7);
@@ -80,8 +79,7 @@ app.get(['/', '/index.html'], (req, res) => {
 app.use(express.static(frontendDir));
 
 app.get('*', (req, res) => {
-  const html = fs.readFileSync(path.join(frontendDir, 'vms_fixed.html'), 'utf8');
-  const injected = html.replace('</body>', '<script src="/api-bridge.js"></script>\n</body>');
+const html = fs.readFileSync(path.join(__dirname, 'frontend', 'vms_fixed.html'), 'utf8');  const injected = html.replace('</body>', '<script src="/api-bridge.js"></script>\n</body>');
   res.setHeader('Content-Type', 'text/html');
   res.send(injected);
 });
