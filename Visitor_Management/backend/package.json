@@ -1,0 +1,24 @@
+{
+  "name": "vms-backend",
+  "version": "1.0.0",
+  "description": "Breakthru.ai Visitor Management System Backend",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "serve": "npm run dev"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-telegram-bot-api": "^0.67.0",
+    "nodemailer": "^8.0.10",
+    "pg": "^8.11.5",
+    "puppeteer": "^25.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
